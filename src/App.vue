@@ -1,47 +1,54 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+
+
+export default{
+  data(){
+    return{
+      contador: 10
+    }
+  },
+  methods:{
+    incrementar(){
+      this.contador++
+    },
+    decrementar(){
+    if(this.contador > 0){
+      this.contador--
+    }
+  },
+  ressetar(){
+    this.contador = 0
+  },
+  
+  },
+  
+  Mounted(){
+console.log(`Componente montado`)
+console.log(`Contador:` + this.contador)
+}
+
+}
+
+
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <button @click="incrementar">+</button>
+  <button @click="decrementar">-</button>
+  <button @click="ressetar">C</button>
+  <p>Valor do contador : {{contador}}</p>
+  
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+button{
+  margin-left: 10px;
+  border-radius: 8px;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background-color:#B78DF2
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
